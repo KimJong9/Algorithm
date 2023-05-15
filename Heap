@@ -27,3 +27,19 @@ print("분류 전 숫자들: ",numbers)
 buildHeap(numbers, len(numbers)-1)
 
 print("분류 후 숫자들: ",numbers)
+
+def heapSort(arr, n):
+    buildHeap(arr, n)
+    for i in range(n, 1, -1):
+        arr[0], arr[i-1] = arr[i-1], arr[0]
+        heapify(arr, 0, i-2)
+
+# 예시로 랜덤으로 중복되지 않는 정수 20개 생성
+numbers = random.sample(range(1, 101), 20)
+
+print("분류 전 숫자들: ",numbers)
+
+# 힙 정렬
+heapSort(numbers, len(numbers)-1)
+
+print("분류 후 숫자들: ",numbers)
