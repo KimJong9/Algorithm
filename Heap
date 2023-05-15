@@ -1,0 +1,29 @@
+import random
+
+def buildHeap(arr, n):
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(arr, i, n)
+
+def heapify(arr, k, n):
+    left = 2 * k + 1
+    right = 2 * k + 2
+    smaller = k
+
+    if left <= n and arr[left] < arr[smaller]:
+        smaller = left
+    if right <= n and arr[right] < arr[smaller]:
+        smaller = right
+
+    if smaller != k:
+        arr[k], arr[smaller] = arr[smaller], arr[k]
+        heapify(arr, smaller, n)
+
+# 예시로 랜덤으로 중복되지 않는 정수 20개 생성
+numbers = random.sample(range(1, 101), 20)
+
+print("분류 전 숫자들: ",numbers)
+
+# 힙 구조로 변환
+buildHeap(numbers, len(numbers)-1)
+
+print("분류 후 숫자들: ",numbers)
