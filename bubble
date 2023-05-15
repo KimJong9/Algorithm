@@ -1,0 +1,21 @@
+import random
+
+def bubbleSort(arr, n):
+    for last in range(n, 1, -1):
+        sorted = True
+        for i in range(last-1):
+            if arr[i] > arr[i+1]:
+                arr[i], arr[i+1] = arr[i+1], arr[i]
+                sorted = False
+        if sorted:
+            return
+
+# 예시로 랜덤으로 중복되지 않는 정수 20개 생성
+numbers = random.sample(range(1, 101), 20)
+
+print("분류 전 숫자들: ",numbers)
+
+# 버블 정렬
+bubbleSort(numbers, len(numbers))
+
+print("분류 전 숫자들: ",numbers)
