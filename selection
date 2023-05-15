@@ -1,0 +1,23 @@
+import random
+
+def selectionSort(arr, n):
+    for last in range(n, 1, -1):
+        k = theLargest(arr, last)
+        arr[k], arr[last-1] = arr[last-1], arr[k]
+
+def theLargest(arr, last):
+    largest = 0
+    for i in range(1, last):
+        if arr[i] > arr[largest]:
+            largest = i
+    return largest
+
+# 예시로 랜덤으로 중복되지 않는 정수 20개 생성
+numbers = random.sample(range(1, 101), 20)
+
+print("분류 전 숫자들: ",numbers)
+
+# 선택 정렬
+selectionSort(numbers, len(numbers))
+
+print("분류 전 숫자들: ",numbers)
