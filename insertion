@@ -1,0 +1,20 @@
+import random
+
+def insertionSort(arr, n):
+    for i in range(1, n):
+        loc = i - 1
+        newItem = arr[i]
+        while loc >= 0 and newItem < arr[loc]:
+            arr[loc + 1] = arr[loc]
+            loc -= 1
+        arr[loc + 1] = newItem
+
+# 예시로 랜덤으로 중복되지 않는 정수 20개 생성
+numbers = random.sample(range(1, 101), 20)
+
+print("분류 전 숫자들: ",numbers)
+
+# 삽입 정렬
+insertionSort(numbers, len(numbers))
+
+print("분류 전 숫자들: ",numbers)
