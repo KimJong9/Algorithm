@@ -1,0 +1,50 @@
+import random
+
+def merge(arr, p, q, r):
+    i = p
+    j = q + 1
+    t = 0
+    tmp = [0] * (r - p + 1)
+
+    while i <= q and j <= r:
+        if arr[i] <= arr[j]:
+            tmp[t] = arr[i]
+            i += 1
+        else:
+            tmp[t] = arr[j]
+            j += 1
+        t += 1
+
+    while i <= q:
+        tmp[t] = arr[i]
+        i += 1
+        t += 1
+
+    while j <= r:
+        tmp[t] = arr[j]
+        j += 1
+        t += 1
+
+    i = p
+    t = 0
+    while i <= r:
+        arr[i] = tmp[t]
+        i += 1
+        t += 1
+
+def mergeSort(arr, p, r):
+    if p < r:
+        q = (p + r) // 2
+        mergeSort(arr, p, q)
+        mergeSort(arr, q + 1, r)
+        merge(arr, p, q, r)
+
+# 예시로 랜덤으로 중복되지 않는 정수 20개 생성
+numbers = random.sample(range(1, 101), 20)
+
+print("분류 전 숫자들: ",numbers)
+
+# 병합 정렬
+mergeSort(numbers, 0, len(numbers) - 1)
+
+print("분류 전 숫자들: ",numbers)
